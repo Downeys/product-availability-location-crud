@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: downeys-location-crud
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+server:
+  port: 8080
+
