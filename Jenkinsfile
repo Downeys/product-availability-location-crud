@@ -7,10 +7,10 @@ pipeline {
                 git branch: 'main', credentialsId: 'GITHUB_CREDENTIALS', url: 'https://github.com/Downeys/product-availability-location-crud.git'
             }
         }
-        stage('Clean Build') {
+        stage('Build') {
             steps {
                 withGradle(){
-                    sh "./gradlew -v"
+                    sh "./gradlew build"
                 }
             }
         }
