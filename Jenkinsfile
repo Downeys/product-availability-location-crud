@@ -9,8 +9,8 @@ pipeline {
         }
         stage('Clean Build') {
             steps {
-                script{
-                    sh "./gradlew clean build"
+                withGradle(){
+                    sh "./gradlew -v"
                 }
             }
         }
