@@ -16,7 +16,15 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh "docker build . -t downeys/bcpa-location-crud"
+                sh "docker build . -t downeys/bcpa-location-crud:latest"
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                withCredentials([string(credentialsId: 'DOCKERHUB_CREDENTIALS', variable: 'DOCKERHUB_CREDENTIALS')]) {
+                    sh "docker login -u downeys -p ${DOCKERHUB_CREDENTIALS}"
+                }
+                sh "docker push downeys/bcpa-location-crud"
             }
         }
     }
