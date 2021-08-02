@@ -27,5 +27,14 @@ pipeline {
                 sh "docker push downeys/bcpa-location-crud"
             }
         }
+        stage('Deploy Image to K8S'){
+            steps {
+                kubernetesDeploy(
+                    configs: 'LocationCrud.yml',
+                    kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
+                    enableConfigSubstitution: true
+                )
+            }
+        }
     }
 }
