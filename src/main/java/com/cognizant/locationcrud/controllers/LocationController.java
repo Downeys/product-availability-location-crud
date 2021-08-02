@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/health")
+@RequestMapping(value = "/healthCheck")
 @CrossOrigin(value = "*")
 public class LocationController {
 
