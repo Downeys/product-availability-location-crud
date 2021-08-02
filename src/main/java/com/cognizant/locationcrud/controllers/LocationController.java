@@ -12,6 +12,6 @@ public class LocationController {
 
     @GetMapping
     public String healthCheck(){
-        return "LocationCrud API and the pipeline is healthy";
+        return "LocationCrud API is healthy and pipeline issue is resolved";
     }
 }
