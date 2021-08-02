@@ -13,4 +13,9 @@ spring:
       ddl-auto: create
 server:
   port: 8080
+keycloak:
+  auth-server-url: http://3.21.236.40:8080/auth/
+  realm: Master
+  resource: bench-login
+  public-client: true
 
