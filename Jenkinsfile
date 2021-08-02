@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Deploy Image to K8S'){
             steps {
-                sh 'kubectl rollout restart deployment/bcpa-location-crud  --namespace=default'
+                sh 'kubectl rollout restart deployment/bcpa-location-controller  --namespace=default'
             }
         }
     }
