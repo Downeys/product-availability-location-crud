@@ -30,7 +30,7 @@ pipeline {
         stage('Deploy Image to K8S'){
             steps {
                 kubernetesDeploy(
-                    configs: 'LocationCrud.yml',
+                    configs: 'locationCrud.yml',
                     kubeconfigId: 'KUBERNETES_CLUSTER_CONFIG',
                     enableConfigSubstitution: true
                 )
