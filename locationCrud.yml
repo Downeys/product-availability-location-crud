@@ -2,14 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    name: location-crud
+    app: location-crud
   name: bcpa-location-controller
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: location-crud
   template:
     metadata:
       labels:
-        name: location-crud
+        app: location-crud
     spec:
       containers:
         - image: downeys/bcpa-location-crud
