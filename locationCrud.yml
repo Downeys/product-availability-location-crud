@@ -2,20 +2,20 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   labels:
-    name: locationCRUD
+    name: location-crud
   name: bcpa-location-controller
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: locationCRUD
+        name: location-crud
     spec:
       containers:
         - image: downeys/bcpa-location-crud
-          name: locationCRUD
+          name: location-crud
           ports:
-            - name: locationCRUD
+            - name: location-crud
               containerPort: 8080
 ---
 #Node Port Service
@@ -23,12 +23,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    name: locationCRUD
-  name: locationCRUD
+    name: location-crud
+  name: location-crud
 spec:
   type: NodePort
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    name: locationCRUD
+    name: location-crud
