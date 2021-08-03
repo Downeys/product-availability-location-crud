@@ -29,7 +29,6 @@ pipeline {
         }
         stage('Deploy Image to K8S'){
             steps {
-                sh 'kubectl delete deployment/bcpa-location-controller'
                 sh "kubectl apply -f 'locationCrud.yml'"
             }
         }
