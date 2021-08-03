@@ -4,7 +4,6 @@ metadata:
   labels:
     app: location-crud
   name: bcpa-location-controller
-  namespace: ns-location-crud
 spec:
   replicas: 1
   selector:
