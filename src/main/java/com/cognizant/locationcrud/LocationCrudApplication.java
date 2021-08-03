@@ -9,5 +9,5 @@ public class LocationCrudApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LocationCrudApplication.class, args);
 	}
-//                 sh "kubectl apply -f 'locationCrud.yml'"
+//   sh 'kubectl rollout restart deployment/bcpa-location-controller  --namespace=default'
 }
