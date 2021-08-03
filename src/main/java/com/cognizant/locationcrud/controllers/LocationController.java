@@ -12,6 +12,6 @@ public class LocationController {
 
     @GetMapping
     public String healthCheck(){
-        return "LocationCrud API is healthy.This is a longer test.";
+        return "LocationCrud API is healthy.";
     }
 }
