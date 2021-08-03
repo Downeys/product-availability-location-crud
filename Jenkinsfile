@@ -29,7 +29,6 @@ pipeline {
         }
         stage('Deploy Image to K8S'){
             steps {
-                sh 'kubectl -n default delete pod --all'
                 sh "kubectl apply -f 'locationCrud.yml'"
             }
         }
