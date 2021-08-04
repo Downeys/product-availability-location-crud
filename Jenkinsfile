@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh "docker build . -t downeys/bcpa-locationEntity-crud:latest"
+                sh "docker build . -t downeys/bcpa-location-crud:latest"
             }
         }
         stage('Docker Push') {
@@ -19,7 +19,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'DOCKERHUB_CREDENTIALS', variable: 'DOCKERHUB_CREDENTIALS')]) {
                     sh "docker login -u downeys -p ${DOCKERHUB_CREDENTIALS}"
                 }
-                sh "docker push downeys/bcpa-locationEntity-crud"
+                sh "docker push downeys/bcpa-location-crud"
             }
         }
         stage('Deploy Image to K8S'){
