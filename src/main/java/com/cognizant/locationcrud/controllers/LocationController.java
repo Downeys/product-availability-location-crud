@@ -9,7 +9,7 @@ import java.util.List;
 @RequestMapping(value = "/location")
 @CrossOrigin(value = "*")
 public class LocationController {
-
+    //comment here
     @GetMapping
     public List<LocationEntity> getAllLocations(){
         return null;
