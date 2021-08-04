@@ -1,6 +1,8 @@
 package com.cognizant.locationcrud.controllers;
 
-import com.cognizant.locationcrud.models.LocationEntity;
+import com.cognizant.locationcrud.models.Location;
+import com.cognizant.locationcrud.service.ServiceLayer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,15 +11,16 @@ import java.util.List;
 @RequestMapping(value = "/location")
 @CrossOrigin(value = "*")
 public class LocationController {
-    //comment here
-    @GetMapping
-    public List<LocationEntity> getAllLocations(){
-        return null;
+    private ServiceLayer service;
+
+    @Autowired
+    public LocationController(ServiceLayer service){
+        this.service = service;
     }
 
-    @GetMapping(path = "/{locationId}")
-    public LocationEntity getLocationById(@PathVariable Integer locationId){
-        return null;
+    @GetMapping(path = "/product/{productId}")
+    public List<Location> getLocationByProductId(@PathVariable Long productId){
+        return service.getLocationsByProductId(productId);
     }
 
 }
