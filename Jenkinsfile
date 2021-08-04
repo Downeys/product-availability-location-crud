@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Git Clone') {
             steps {
-                git branch: 'main', credentialsId: 'GITHUB_CREDENTIALS', url: 'https://github.com/Downeys/product-availability-location-crud.git'
+                git branch: 'main', credentialsId: 'GITHUB_CREDENTIALS', url: 'https://github.com/Downeys/product-availability-locationEntity-crud.git'
             }
         }
         stage('Clean Build') {
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh "docker build . -t downeys/bcpa-location-crud:latest"
+                sh "docker build . -t downeys/bcpa-locationEntity-crud:latest"
             }
         }
         stage('Docker Push') {
@@ -24,7 +24,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'DOCKERHUB_CREDENTIALS', variable: 'DOCKERHUB_CREDENTIALS')]) {
                     sh "docker login -u downeys -p ${DOCKERHUB_CREDENTIALS}"
                 }
-                sh "docker push downeys/bcpa-location-crud"
+                sh "docker push downeys/bcpa-locationEntity-crud"
             }
         }
         stage('Deploy Image to K8S'){
