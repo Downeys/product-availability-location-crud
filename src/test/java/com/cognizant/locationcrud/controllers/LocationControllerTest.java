@@ -37,16 +37,36 @@ class LocationControllerTest {
     @MockBean
     private ServiceLayer mockService;
 
+    private LocationController controller;
+
     private List<Location> mockLocationList1, mockLocationList2;
 
     @BeforeEach
     void setUp() {
         setupMockLocations();
         setupMockService();
+        controller = new LocationController(mockService);
     }
 
     @Test
-    void getLocationByProductId() throws Exception{
+    void shouldReturnLocationListWhenValidProductIdIsReceived(){
+        Integer intProductId1 = 1;
+        Integer intProductId2 = 2;
+        Long productIdForTest1 = intProductId1.longValue();
+        Long productIdForTest2 = intProductId2.longValue();
+
+        List<Location> expectedOutputFromTest1 = mockLocationList1;
+        List<Location> expectedOutputFromTest2 = mockLocationList1;
+
+        List<Location> actualOutputFromTest1 = controller.getLocationByProductId(productIdForTest1);
+        List<Location> actualOutputFromTest2 = controller.getLocationByProductId(productIdForTest2);
+
+        assertEquals(expectedOutputFromTest1, actualOutputFromTest1);
+        assertEquals(expectedOutputFromTest2, actualOutputFromTest2);
+    }
+
+    @Test
+    void shouldReturnLocationListAndStatusOkWhenValidHttpRequestIsReceived() throws Exception{
         String testUri1 = "/location/product/1";
         String testUri2 = "/location/product/2";
 
